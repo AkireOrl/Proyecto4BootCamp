@@ -34,6 +34,7 @@ Decidí crear una aplicación web para ayudar a los amantes del gimnasio, que le
 ## Stack
 Tecnologías utilizadas:
 <div align="center">
+
 <a href="https://www.mongodb.com/">
     <img src= "https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white"/>
 </a>
@@ -50,7 +51,7 @@ Tecnologías utilizadas:
 
 
 ## Diagrama BD
-!['imagen-db'](./images/sampleDb.png)
+!['imagen-db'](./img/TatuShop_DB.png)
 
 ## Instalación en local
 1. Clonar el repositorio
