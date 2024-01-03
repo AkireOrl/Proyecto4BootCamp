@@ -15,11 +15,27 @@ export class CreateRoles1703715189136 implements MigrationInterface {
                      generationStrategy: "increment",
                   },
                   {
-                     name: "name",
-                     type: "varchar",
-                     length: "255",
-                     isUnique: true,
-                  },
+                     name: "role_name",
+                     type: "enum",
+                     enum: ["user", "admin", "super_admin"],
+                     default: `"user"`
+                 },
+                 {
+                  name: "privilege",
+                  type: "varchar",
+                  length: "255",
+              },
+              {
+                  name: "created_at",
+                  type: "timestamp",
+                  default: "CURRENT_TIMESTAMP"
+              },
+              {
+                  name: "updated_at",
+                  type: "timestamp",
+                  default: "CURRENT_TIMESTAMP",
+                  onUpdate: "CURRENT_TIMESTAMP"
+              },
                ],
             }),
             true

@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm"
 
-export class CreateArtists1703762105774 implements MigrationInterface {
+export class CreateArtists1704301084949 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
@@ -16,22 +16,35 @@ export class CreateArtists1703762105774 implements MigrationInterface {
                   },
                   {
                     name: "user_id",
-                    type: "int",
-                    isPrimary: true,
+                    type: "varchar",
+                    length: "255",                         
                  },
                   {
                      name: "name",
                      type: "varchar",
-                     length: "255",
-                     isUnique: true,
-                     
+                     length: "255",                         
                   },
+                  {
+                    name: "surname",
+                    type: "varchar",
+                    length: "255",                         
+                 },
                   {
                     name: "portfolio",
                     type: "varchar",
-                    length: "255",
-                    
+                    length: "255",                        
                  },
+                 {
+                    name: "created_at",
+                    type: "timestamp",
+                    default: "CURRENT_TIMESTAMP"
+                },
+                {
+                    name: "updated_at",
+                    type: "timestamp",
+                    default: "CURRENT_TIMESTAMP",
+                    onUpdate: "CURRENT_TIMESTAMP"
+                },
 
                ],
                foreignKeys: [
@@ -44,7 +57,7 @@ export class CreateArtists1703762105774 implements MigrationInterface {
             }),
             true
          );
-      }
+}
     
 
     public async down(queryRunner: QueryRunner): Promise<void> {

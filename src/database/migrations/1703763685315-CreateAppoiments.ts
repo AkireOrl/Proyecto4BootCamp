@@ -35,7 +35,17 @@ export class CreateAppoiments1703763685315 implements MigrationInterface {
                     length: "255",
                     
                  },
-               
+                 {
+                  name: "created_at",
+                  type: "timestamp",
+                  default: "CURRENT_TIMESTAMP"
+              },
+              {
+                  name: "updated_at",
+                  type: "timestamp",
+                  default: "CURRENT_TIMESTAMP",
+                  onUpdate: "CURRENT_TIMESTAMP"
+              },
 
                ],
                foreignKeys: [
