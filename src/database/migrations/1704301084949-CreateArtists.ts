@@ -16,8 +16,8 @@ export class CreateArtists1704301084949 implements MigrationInterface {
                   },
                   {
                     name: "user_id",
-                    type: "varchar",
-                    length: "255",                         
+                    type: "int",     
+                    isPrimary: true,               
                  },
                   {
                      name: "name",
