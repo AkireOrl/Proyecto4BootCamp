@@ -13,7 +13,7 @@ export const AppDataSource = new DataSource({
    port: 3307,
    username: "root",
    password: "root",
-   database: "tatushop_2",
+   database: "tatushop",
    entities: [`${__dirname}/../models/**/*{.js,.ts}`],
   // migrations: [`${__dirname}/migrations/**/*{.js,.ts}`],
    migrations: [
