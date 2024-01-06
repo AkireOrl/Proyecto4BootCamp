@@ -1,10 +1,12 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
-import { CreateUsers1703715862010 } from "./migrations/1703715862010-CreateUsers";
-import { CreateRoles1703715189136 } from "./migrations/1703715189136-CreateRoles";
-import { CreateAppoiments1703763685315 } from "./migrations/1703763685315-CreateAppoiments";
-import { CreateDesigns1703763946508 } from "./migrations/1703763946508-CreateDesigns";
-import { CreateArtists1704301084949 } from "./migrations/1704301084949-CreateArtists";
+
+import { CreateRoles1704562633107 } from "./migrations/1704562633107-CreateRoles";
+import { CreateUsers1704562644836 } from "./migrations/1704562644836-CreateUsers";
+import { CreateArtists1704562654443 } from "./migrations/1704562654443-CreateArtists";
+import { CreateAppoiments1704562664928 } from "./migrations/1704562664928-CreateAppoiments";
+import { CreateDesigns1704562673576 } from "./migrations/1704562673576-CreateDesigns";
+
 // -----------------------------------------------------------------------------
 
 export const AppDataSource = new DataSource({
@@ -13,15 +15,16 @@ export const AppDataSource = new DataSource({
    port: 3307,
    username: "root",
    password: "root",
-   database: "tatushop",
+   database: "tatushopp",
    entities: [`${__dirname}/../models/**/*{.js,.ts}`],
   // migrations: [`${__dirname}/migrations/**/*{.js,.ts}`],
    migrations: [
-      CreateUsers1703715862010,
-      CreateRoles1703715189136,
-      CreateArtists1704301084949,
-      CreateAppoiments1703763685315,
-      CreateDesigns1703763946508,
+     CreateRoles1704562633107,
+     CreateUsers1704562644836,
+     CreateArtists1704562654443,
+     CreateAppoiments1704562664928,
+     CreateDesigns1704562673576
+
    ],
    synchronize: false,
    logging: false,
