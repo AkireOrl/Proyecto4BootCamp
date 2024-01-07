@@ -42,7 +42,4 @@ export class User extends BaseEntity {
     clientAppointments!: Appoinment[];
 
 
-
-
-   //Faltan las columnas
 }
