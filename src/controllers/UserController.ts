@@ -9,6 +9,7 @@ export class UserController implements Controller {
    async getAll(req: Request, res: Response): Promise<void | Response<any>> {
       try {
          const userRepository = AppDataSource.getRepository(User);
+         
          const allUsers = await userRepository.find();
          res.status(200).json(allUsers);
       } catch (error) {

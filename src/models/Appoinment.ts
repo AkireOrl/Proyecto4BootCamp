@@ -8,10 +8,10 @@ export class Appoinment extends BaseEntity {
     id!: number;
 
     @Column()
-    user_id!: string;
+    user_id!: number;
 
     @Column()
-    artist_id!: string;
+    artist_id!: number;
 
     @Column()
     date!: string;

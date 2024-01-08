@@ -25,14 +25,14 @@ export class User extends BaseEntity {
    photo!: string;
 
    @Column()
-   password!: string;
+   password_hash!: string;
 
    @Column()
    email!: string;
 
    @ManyToOne(() => Role, (role) => role.users)
    @JoinColumn ({name: "role_id"})
-   role!: Role;
+   role!: Role[];
 
    @ManyToOne(() => Artist, (artist) => artist.users)
    @JoinColumn ({name: "artist_id"})
