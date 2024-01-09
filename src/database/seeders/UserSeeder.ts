@@ -1,34 +1,3 @@
-// import { AppDataSource } from "../data-source";
-// import { User } from "../../models/User";
-// import { UserFactory } from "../factories/UserFactory";
-// import { Role } from "../../models/Role";
-
-// export const userSeeder = async () => {
-//    try {
-//       await AppDataSource.initialize();
-//     //Crear usuario
-//     const userRespository = AppDataSource.getRepository(User);
-
-//     const count = 3;
-//     //Crear usuario
-//     const users = UserFactory.createMany(count);
-//     console.log("Inserting Users...");
-
-//     //Asignar relaciones con Roles
-    
-   
-//    //  users.forEach( 
-//    //    (user) =>  user.role = [{id:1, role_name: "user", created_at: "string", updated_at: "string", users: "user"} as Role]
-//    //  );
-
-//     await userRespository.save(users);
-
-//    } catch (error) {
-//       console.error("Error seeding the database", error);
-//    } finally {
-//       await AppDataSource.destroy();
-//    }
-// };
 
 import { AppDataSource } from "../data-source";
 import { User } from "../../models/User";

@@ -2,6 +2,7 @@ import { BaseEntity, Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOn
 import { Role } from "./Role";
 import { Artist } from "./Artist";
 import { Appoinment } from "./Appoinment";
+import { UserRoles } from "../constants/UserRoles";
 
 
 @Entity("users")

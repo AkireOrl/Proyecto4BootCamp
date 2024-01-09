@@ -3,7 +3,7 @@ import { ArtistFactory } from "../factories/ArtistFactory";
 import { Artist } from "../../models/Artist";
 import { seedUsersWithRoles } from "./UserSeeder";
 import { UserRoles } from "../../constants/UserRoles";
-import { Admin } from "typeorm";
+
 
 // -----------------------------------------------------------------------------
 
