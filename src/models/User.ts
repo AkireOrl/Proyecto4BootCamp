@@ -1,4 +1,4 @@
-import { BaseEntity, Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm"
+import { BaseEntity, Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm"
 import { Role } from "./Role";
 import { Artist } from "./Artist";
 import { Appoinment } from "./Appoinment";
@@ -34,9 +34,8 @@ export class User extends BaseEntity {
    @JoinColumn ({name: "role_id"})
    role!: Role[];
 
-   @ManyToOne(() => Artist, (artist) => artist.users)
-   @JoinColumn ({name: "artist_id"})
-   artist!: Artist;
+   @OneToOne(() => Artist, (artist) => artist.users)
+   artist?: Artist;
 
    @OneToMany(() => Appoinment, (appointment) => appointment.user_id)
     clientAppointments!: Appoinment[];

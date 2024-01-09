@@ -9,7 +9,7 @@ import { UserRoles } from "../../constants/UserRoles";
 
 export class UserFactory extends BaseFactory<User> {
    protected  generateSpecifics(user: User): User {
-      user.username = faker.internet.userName();
+      user.username = faker.internet.userName(); 
       user.name = faker.person.firstName();
       user.surname = faker.person.lastName();
       user.password_hash = bcrypt.hashSync("12345678", 10);

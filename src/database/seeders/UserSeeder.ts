@@ -49,7 +49,7 @@ export const userSeeder = async () => {
       // Definir la cantidad de estudiantes a crear
       const count = 3;
 
-      // / Llamar a la función para sembrar usuarios con roles de admin
+      // / Llamar a la función para sembrar usuarios con roles de user
       await seedUsersWithRoles({
          roles: [UserRoles.USER],
          count: count,

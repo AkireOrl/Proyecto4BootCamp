@@ -1,4 +1,4 @@
-import { BaseEntity, Entity, PrimaryGeneratedColumn, Column , OneToMany } from "typeorm"
+import { BaseEntity, Entity, PrimaryGeneratedColumn, Column , OneToMany, OneToOne } from "typeorm"
 import { User } from "./User";
 import { Design } from "./Design";
 import { Appoinment } from "./Appoinment";
@@ -26,7 +26,7 @@ export class Artist extends BaseEntity {
     @Column()
     updated_at!: Date
 
-    @OneToMany(() => User, (user) => user.role)
+    @OneToOne(() => User, (user) => user.role)
     users!: User[];
 
     @OneToMany(() => Design, (design) => design)
