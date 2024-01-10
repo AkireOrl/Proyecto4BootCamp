@@ -1,11 +1,11 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm"
 
-export class CreateAppoiments1704562664928 implements MigrationInterface {
-   
+export class CreateDesigns1704837152220 implements MigrationInterface {
+
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-               name: "appoiments",
+               name: "designs",
                columns: [
                   {
                      name: "id",
@@ -15,45 +15,34 @@ export class CreateAppoiments1704562664928 implements MigrationInterface {
                      generationStrategy: "increment",
                   },
                   {
-                    name: "user_id",
-                    type: "int",
-                    isPrimary: true,
-                 },
-                 {
                     name: "artist_id",
                     type: "int",
                     isPrimary: true,
                  },
                   {
-                     name: "date",
+                     name: "style",
                      type: "varchar",
-                     length: "255",                    
+                     length: "255",                         
                   },
                   {
-                    name: "hour",
+                    name: "picture",
                     type: "varchar",
-                    length: "255",
-                    
+                    length: "255",                        
                  },
                  {
-                  name: "created_at",
-                  type: "timestamp",
-                  default: "CURRENT_TIMESTAMP"
-              },
-              {
-                  name: "updated_at",
-                  type: "timestamp",
-                  default: "CURRENT_TIMESTAMP",
-                  onUpdate: "CURRENT_TIMESTAMP"
-              },
+                    name: "created_at",
+                    type: "timestamp",
+                    default: "CURRENT_TIMESTAMP"
+                },
+                {
+                    name: "updated_at",
+                    type: "timestamp",
+                    default: "CURRENT_TIMESTAMP",
+                    onUpdate: "CURRENT_TIMESTAMP"
+                },
 
                ],
                foreignKeys: [
-               {
-                columnNames: ["user_id"],
-                referencedTableName: "users",
-                referencedColumnNames: ["id"],
-               },
                {
                 columnNames: ["artist_id"],
                 referencedTableName: "artists",
@@ -63,11 +52,10 @@ export class CreateAppoiments1704562664928 implements MigrationInterface {
             }),
             true
          );
-      }
-    
+    }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("appoiments");
+        await queryRunner.dropTable("designs");
     }
 
 }

@@ -1,8 +1,8 @@
-import { BaseEntity, Entity, PrimaryGeneratedColumn, Column , OneToMany, OneToOne } from "typeorm"
+import { BaseEntity, Entity, PrimaryGeneratedColumn, Column , OneToMany, OneToOne, JoinColumn } from "typeorm"
 import { User } from "./User";
 import { Design } from "./Design";
 import { Appoinment } from "./Appoinment";
-
+import { UserRoles } from "../constants/UserRoles";
 @Entity("artist")
 export class Artist extends BaseEntity {
     @PrimaryGeneratedColumn()
@@ -26,8 +26,9 @@ export class Artist extends BaseEntity {
     @Column()
     updated_at!: Date
 
-    @OneToOne(() => User, (user) => user.role)
-    users!: User[];
+    @OneToOne(() => User, (user) => user.artist)
+    @JoinColumn({name: "user_id"})
+    users!: User;
 
     @OneToMany(() => Design, (design) => design)
     design!: Design[];

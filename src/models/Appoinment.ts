@@ -25,7 +25,7 @@ export class Appoinment extends BaseEntity {
     @Column()
     updated_at!: Date
 
-    @ManyToOne(() => User, (user) => user.role)
+    @ManyToOne(() => User, (user) => user.roles)
     @JoinColumn ({name: "user_id"})
     user!: User;
 

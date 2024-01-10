@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm"
 
-export class CreateRoles1704562633107 implements MigrationInterface {
+export class CreateRoles1704837097352 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
@@ -18,8 +18,9 @@ export class CreateRoles1704562633107 implements MigrationInterface {
                         name: "role_name",
                         type: "enum",
                         enum: ["user", "admin", "super_admin"],
-                        default: `"user"`
+                        default: '"user"'
                     },
+                   
                     {
                         name: "created_at",
                         type: "timestamp",
@@ -36,7 +37,6 @@ export class CreateRoles1704562633107 implements MigrationInterface {
             true
         );
     }
-
 
     public async down(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.dropTable("roles");

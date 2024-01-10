@@ -1,7 +1,7 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn,OneToMany, JoinColumn } from "typeorm"
+import { Column, Entity, PrimaryGeneratedColumn,ManyToMany, JoinTable } from "typeorm"
 import { User } from "./User";
 @Entity("roles")
-export class Role extends BaseEntity {
+export class Role {
     @PrimaryGeneratedColumn()
     id!: number;
 
@@ -14,11 +14,17 @@ export class Role extends BaseEntity {
     @Column()
     updated_at!: Date
 
-    @OneToMany(() => User, (user) => user.role)
-    @JoinColumn({
-        name: "user_role",
-        referencedColumnName: "id"
+    @ManyToMany(() => User, (user) => user.roles)
+    @JoinTable({
+       name: "users_roles",
+       joinColumn: {
+          name: "role_id",
+          referencedColumnName: "id",
+       },
+       inverseJoinColumn: {
+          name: "user_id",
+          referencedColumnName: "id",
+       },
     })
-    users!: User[];
-
-}
+    users?: User[];
+ }

@@ -1,9 +1,5 @@
 import { faker } from "@faker-js/faker";
-import { User } from "../../models/User";
-import { Role } from "../../models/Role";
-import bcrypt from "bcrypt";
 import { BaseFactory } from "./BaseFactory";
-import { UserRoles } from "../../constants/UserRoles";
 import { Artist } from "../../models/Artist";
 
 // -----------------------------------------------------------------------------

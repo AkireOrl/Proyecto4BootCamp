@@ -91,6 +91,7 @@ npx typeorm entity:create ./src/models/Enrollment
 #Crear migraciones para MI App, con mis Entidades
 npx typeorm migration:create ./src/database/migrations/CreateRoles
 npx typeorm migration:create ./src/database/migrations/CreateUsers
+npx typeorm migration:create ./src/database/migrations/CreateUsersRoles
 npx typeorm migration:create ./src/database/migrations/CreateArtists
 npx typeorm migration:create ./src/database/migrations/CreateAppoiments
 npx typeorm migration:create ./src/database/migrations/CreateDesigns

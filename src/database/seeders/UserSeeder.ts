@@ -51,7 +51,7 @@ export const seedUsersWithRoles = async ({
 
    // Asignar roles a cada usuario
    users.forEach((user) => {
-      user.role = roles;
+      user.roles = roles;
    });
 
    // Guardar usuarios en la base de datos
