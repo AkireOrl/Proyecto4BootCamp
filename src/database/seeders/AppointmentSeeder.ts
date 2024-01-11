@@ -1,12 +1,13 @@
 import { AppDataSource } from "../data-source";
-import { AppointmentFactory } from "../factories/ApointmentFactory";
-import { Appoinment } from "../../models/Appointment";
+import { AppointmentFactory } from "../factories/AppointmentFactory";
+import { Appointment } from "../../models/Appointment";
 import { seedArtistsWithUser } from "./ArtistSeeder"; 
 import { seedUsersWithRoles } from "./UserSeeder";
 import { Role } from "../../models/Role";
 import { UserFactory } from "../factories/UserFactory"; 
 import { User } from "../../models/User";
-import { Artist } from "../../models/Artist";
+import { Artists } from "../../models/Artist";
+import { UserRoles } from "../../constants/UserRoles";
 
 //-----------------------
 
@@ -15,10 +16,10 @@ export const appointmentSeeder = async () => {
 
         await AppDataSource.initialize();
 
-        const appointmentRepository = AppDataSource.getRepository(Appoinment);
+        const appointmentRepository = AppDataSource.getRepository(Appointment);
         const appointmentFactory = new AppointmentFactory(appointmentRepository);
-        const userRepository = AppDataSource.getRepository(User);
-        const artistRepository = AppDataSource.getRepository(Artist);
+      //   const userRepository = AppDataSource.getRepository(User);
+      //   const artistRepository = AppDataSource.getRepository(Artists);
 
 
         // Create users to be associated with the appointments
@@ -26,7 +27,10 @@ export const appointmentSeeder = async () => {
         const artistCount = 5;
         
 
-        const users = await seedUsersWithRoles(usersCount);
+        const users = await seedUsersWithRoles({
+         roles: [UserRoles.USER],
+         count: userCount,
+      });
         const artist = await seedArtistsWithUser(artistCount);
         //Numero de citas a generar
 
@@ -36,8 +40,8 @@ export const appointmentSeeder = async () => {
 
         const appointments = appointmentFactory.createMany(count);
 
-        // Guardar los cursos en la base de datos
-      // await appoimentRepository.save(appointments);
+        // Guardar las citas en la base de datos
+      await appointmentRepository.save(appointments);
 
   
       

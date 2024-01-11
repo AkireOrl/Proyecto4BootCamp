@@ -45,7 +45,7 @@ export class CreateDesigns1704837152220 implements MigrationInterface {
                foreignKeys: [
                {
                 columnNames: ["artist_id"],
-                referencedTableName: "artists",
+                referencedTableName: "artist",
                 referencedColumnNames: ["id"],
                },
             ],

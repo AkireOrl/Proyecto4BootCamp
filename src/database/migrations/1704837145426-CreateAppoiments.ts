@@ -56,7 +56,7 @@ export class CreateAppoiments1704837145426 implements MigrationInterface {
                },
                {
                 columnNames: ["artist_id"],
-                referencedTableName: "artists",
+                referencedTableName: "artist",
                 referencedColumnNames: ["id"],
                },
             ],

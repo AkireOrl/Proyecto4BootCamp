@@ -1,8 +1,9 @@
 import { AppDataSource } from "../data-source";
 import { ArtistFactory } from "../factories/ArtistFactory";
-import { Artist } from "../../models/Artist";
+import { Artists } from "../../models/Artist";
 import { seedUsersWithRoles } from "./UserSeeder";
 import { UserRoles } from "../../constants/UserRoles";
+import { Admin } from "typeorm";
 
 
 // -----------------------------------------------------------------------------
@@ -33,7 +34,7 @@ export const artistSeeder = async () => {
 
 export const seedArtistsWithUser = async (count: number) => {
    // Obtener repositorios y fábricas necesarios
-   const artistRepository = AppDataSource.getRepository(Artist);
+   const artistRepository = AppDataSource.getRepository(Artists);
    const artistFactory = new ArtistFactory(artistRepository);
 
    // Generar usuarios asociados a roles de estudiantes

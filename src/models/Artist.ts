@@ -1,10 +1,10 @@
 import { BaseEntity, Entity, PrimaryGeneratedColumn, Column , OneToMany, OneToOne, JoinColumn } from "typeorm"
 import { User } from "./User";
 import { Design } from "./Design";
-import { Appoinment } from "./Appointment";
+import { Appointment } from "./Appointment";
 import { UserRoles } from "../constants/UserRoles";
 @Entity("artist")
-export class Artist extends BaseEntity {
+export class Artists extends BaseEntity {
     @PrimaryGeneratedColumn()
     id!: number;
 
@@ -33,7 +33,7 @@ export class Artist extends BaseEntity {
     @OneToMany(() => Design, (design) => design)
     design!: Design[];
 
-    @OneToMany(() => Appoinment, (appointment) => appointment.artist)
-    clientAppointments!: Appoinment[];
+    @OneToMany(() => Appointment, (appointment) => appointment.artist)
+    artistAppointments!: Appointment[];
 
 }

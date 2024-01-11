@@ -14,17 +14,6 @@ export class Role {
     @Column()
     updated_at!: Date
 
-    @ManyToMany(() => User, (user) => user.roles)
-    @JoinTable({
-       name: "users_roles",
-       joinColumn: {
-          name: "role_id",
-          referencedColumnName: "id",
-       },
-       inverseJoinColumn: {
-          name: "user_id",
-          referencedColumnName: "id",
-       },
-    })
+
     users?: User[];
  }

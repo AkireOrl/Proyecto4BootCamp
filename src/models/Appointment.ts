@@ -1,8 +1,8 @@
 import { BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn, JoinColumn } from "typeorm"
 import { User } from "./User";
-import { Artist } from "./Artist";
+import { Artists } from "./Artist";
 
-@Entity()
+@Entity("appointments")
 export class Appointment extends BaseEntity {
     @PrimaryGeneratedColumn()
     id!: number;
@@ -29,8 +29,8 @@ export class Appointment extends BaseEntity {
     @JoinColumn ({name: "user_id", referencedColumnName:"id"})
     user!: User;
 
-    @ManyToOne(() => Artist, (artist) => artist.users)
+    @ManyToOne(() => Artists, (artist) => artist.users)
     @JoinColumn ({name: "artist_id", referencedColumnName:"id"})
-    artist!: Artist;
+    artist!: Artists;
 
 }
