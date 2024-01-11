@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import { Appoinment } from "../../models/Appoinment";
+import { Appoinment } from "../../models/Appointment";
 import { BaseFactory } from "./BaseFactory";
 
 export class AppointmentFactory extends BaseFactory<Appoinment> {

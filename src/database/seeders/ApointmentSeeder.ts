@@ -1,6 +1,6 @@
 import { AppDataSource } from "../data-source";
 import { AppointmentFactory } from "../factories/ApointmentFactory";
-import { Appoinment } from "../../models/Appoinment";
+import { Appoinment } from "../../models/Appointment";
 import { seedArtistsWithUser } from "./ArtistSeeder"; 
 import { seedUsersWithRoles } from "./UserSeeder";
 import { Role } from "../../models/Role";

@@ -1,7 +1,7 @@
 import { BaseEntity, Entity, PrimaryGeneratedColumn, Column , OneToMany, OneToOne, JoinColumn } from "typeorm"
 import { User } from "./User";
 import { Design } from "./Design";
-import { Appoinment } from "./Appoinment";
+import { Appoinment } from "./Appointment";
 import { UserRoles } from "../constants/UserRoles";
 @Entity("artist")
 export class Artist extends BaseEntity {

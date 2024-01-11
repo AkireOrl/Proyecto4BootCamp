@@ -1,7 +1,7 @@
 import { BaseEntity, Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm"
 import { Role } from "./Role";
 import { Artist } from "./Artist";
-import { Appoinment } from "./Appoinment";
+import { Appointment } from "./Appointment";
 
 
 @Entity("users")
@@ -45,7 +45,7 @@ export class User {
     @OneToOne(() => Artist, (artist) => artist.users)
     artist?: Artist;
 
-    @OneToMany(() => Appoinment, (appointment) => appointment.user_id)
-    clientAppointments!: Appoinment[];
+    @OneToMany(() => Appointment, (appointment) => appointment.user_id)
+    clientAppointments!: Appointment[];
 
 }
