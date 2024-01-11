@@ -16,7 +16,7 @@ export const artistSeeder = async () => {
       await AppDataSource.initialize();
 
       // Definir la cantidad de estudiantes a crear
-      const count = 20;
+      const count = 10;
 
       // Llamar a la función para crear estudiantes con usuarios asociados
       await seedArtistsWithUser(count);

@@ -16,7 +16,7 @@ export const userSeeder = async () => {
       await AppDataSource.initialize();
 
       // Definir la cantidad de estudiantes a crear
-      const count = 3;
+      const count = 10;
 
       // / Llamar a la función para sembrar usuarios con roles de user
       await seedUsersWithRoles({

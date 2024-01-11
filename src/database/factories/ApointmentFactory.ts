@@ -4,8 +4,8 @@ import { BaseFactory } from "./BaseFactory";
 
 export class AppointmentFactory extends BaseFactory<Appoinment> {
    protected generateSpecifics(appointment: Appoinment): Appoinment {
-      appointment.date= faker.date.weekday(); 
-      // appointment.hour = faker.()
+      appointment.hour= faker.string.alpha();
+      appointment.date= faker.date.weekday();
       return appointment;
    }
 }

@@ -14,11 +14,7 @@ export class CreateRoles1704837116080 implements MigrationInterface {
                      isGenerated: true,
                      generationStrategy: "increment",
                   },
-                  {
-                     name: "role_id",
-                     type: "int",
-                     isPrimary: true,
-                  },
+                 
                   {
                      name: "name",
                      type: "varchar",
@@ -59,14 +55,7 @@ export class CreateRoles1704837116080 implements MigrationInterface {
                   },
     
                ],
-               foreignKeys: [
-                  {
-                     columnNames: ["role_id"],
-                     referencedTableName: "roles",
-                     referencedColumnNames: ["id"],
-                   
-                  },
-               ],
+            
             }),
             true
          );

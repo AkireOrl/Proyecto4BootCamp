@@ -1,4 +1,4 @@
-# Welcome to my backend app
+# TATOOSHOPP API
 
 <details>
   <summary>Contenido 📝</summary>
@@ -21,10 +21,10 @@
 </details>
 
 ## Objetivo
-Este proyecto requería una API funcional conectada a una base de datos con al menos una relación de uno a muchos y una relación de muchos a muchos.
+Este proyecto requería una API funcional conectada a una base de datos relacional.
 
 ## Sobre el proyecto
-Decidí crear una aplicación web para ayudar a los amantes del gimnasio, que les permitiría crear y realizar un seguimiento de nuevas rutinas para sus ejercicios diarios. He visto muchas apps de este estilo pero ninguna que nos permita cambiar tan libremente las rutinas adaptandolas a nuestras necesidades.    
+Propuesto el proyecto de desarrollar una aplicación web para la gestión de una compañía de un estudio de tatuajes, el presente repositorio supone la sección backend del mismo. Esta sección habrá de desarrollarse con un esquema modelo vista controllador, generando una API funcional que permita hacer distintas llamadas, en ocasiones multitabla, discriminando los privilegios de usuario en función de su rol.
 
 ## Deploy 🚀
 <div align="center">
@@ -76,12 +76,9 @@ Tecnologías utilizadas:
                 "password": "princes"
             }
         ```
-- RUTINAS
-    - RECUPERAR RUTINAS  
+- CITAS
 
-            GET http://localhost:3000/api/rutina
-
-    - ...
+- ARTISTAS
 </details>
 
 ## Futuras funcionalidades
@@ -89,6 +86,46 @@ Tecnologías utilizadas:
 [ ] Añadir logs  con winston  
 [ ] Validaciones de la solicitud con express-validator  
 [ ] ...
+
+### Endpoints
+
+**Generar nuevo usuario:** POST, http://localhost:5000/users
+
+**Inicio de sesión:** POST, http://localhost:5000/auth/login
+
+**Traer todos los usuarios:** GET, http://localhost:5000/users
+
+**Modificar usuario:** PUT, http://localhost:5000/users
+
+**Generar nuevos datos de pago:** POST, http://localhost:5000/paymentdatas
+
+**Modificar datos de pago:** PUT, http://localhost:5000/paymentdatas
+
+**Traer datos de pago de un cliente:** GET, http://localhost:5000/paymentdatas/${customerId}
+
+**Traer todos los artistas:** GET, http://localhost:5000/artists
+
+**Generar nuevo artista:** POST, http://localhost:5000/artists
+
+**Traer todos los diseños con datos de artista:** GET, http://localhost:5000/designs
+
+**Traer diseños por búsqueda:** GET, http://localhost:5000/designs/${criteria}
+
+**Traer diseños con datos de artista según su autor:** GET, http://localhost:5000/artists/${userId}
+
+**Generar nuevo diseño:** POST, http://localhost:5000/designs
+
+**Eliminar diseño:** DELETE, http://localhost:5000/designs/${erase}
+
+**Traer todas las citas:** GET, http://localhost:5000/appointments
+
+**Traer las citas de un cliente:** GET, http://localhost:5000/appointments/${userId}
+
+**Traer las citas de un artista:** GET, http://localhost:5000/appointments/artist/${artistId}
+
+**Generar nueva cita:** POST, http://localhost:5000/appointments
+
+**Eliminar cita:** DELETE, http://localhost:5000/appointments/${erase}
 
 ## Contribuciones
 Las sugerencias y aportaciones son siempre bienvenidas.  

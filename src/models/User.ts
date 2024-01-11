@@ -19,10 +19,6 @@ export class User {
     surname!: string;
 
     @Column()
-    role_id!: string;
-    
-
-    @Column()
     photo!: string;
 
     @Column()
