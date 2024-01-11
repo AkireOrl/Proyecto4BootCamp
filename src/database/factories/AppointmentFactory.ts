@@ -1,9 +1,9 @@
 import { faker } from "@faker-js/faker";
-import { Appoinment } from "../../models/Appointment";
+import { Appointment } from "../../models/Appointment";
 import { BaseFactory } from "./BaseFactory";
 
-export class AppointmentFactory extends BaseFactory<Appoinment> {
-   protected generateSpecifics(appointment: Appoinment): Appoinment {
+export class AppointmentFactory extends BaseFactory<Appointment> {
+   protected generateSpecifics(appointment: Appointment): Appointment {
       appointment.hour= faker.string.alpha();
       appointment.date= faker.date.weekday();
       return appointment;
