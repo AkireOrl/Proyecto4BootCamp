@@ -9,7 +9,7 @@ import { appointmentSeeder } from "./AppointmentSeeder";
     await roleSeeder();
     await userSeeder();
     await artistSeeder();
-    await appointmentSeeder();
+    //await appointmentSeeder();
 })();
 
 
