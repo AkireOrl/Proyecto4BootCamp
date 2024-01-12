@@ -36,20 +36,20 @@ export class AuthController {
           await userRepository.save(newUser);
  
           // Crear un artista
-          const newArtist: User = {
-             user: newArtist,
-             name,
-             surname,
+        //   const newArtist: User = {
+        //      user: newArtist,
+        //      name,
+        //      surname,
              
-          };
-          await artistRepository.save(newArtist);
+        //   };
+        //   await artistRepository.save(newArtist);
  
           res.status(StatusCodes.CREATED).json({
-             message: "Artist created successfully",
+             message: "User created successfully",
           });
        } catch (error) {
           res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-             message: "Error while creating artist",
+             message: "Error while creating User",
           });
        }
     }

@@ -7,7 +7,7 @@ import { Appointment } from "./Appointment";
 @Entity("users")
 export class User {
     @PrimaryGeneratedColumn()
-    id!: number;
+    id?: number;
 
     @Column({ unique: true })
     username!: string;
@@ -19,7 +19,7 @@ export class User {
     surname!: string;
 
     @Column()
-    photo!: string;
+    photo?: string;
 
     @Column()
     password_hash!: string;
@@ -43,9 +43,9 @@ export class User {
     roles!: Role[];
 
     @OneToOne(() => Artists, (artists) => artists.users)
-    artist!: Artists;
+    artist?: Artists;
 
     @OneToMany(() => Appointment, (appointment) => appointment.user_id)
-    clientAppointments!: Appointment[];
+    clientAppointments?: Appointment[];
 
 }
