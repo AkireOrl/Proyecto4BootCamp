@@ -20,16 +20,6 @@ export class CreateArtists1704837137436 implements MigrationInterface {
                     isPrimary: true,               
                  },
                   {
-                     name: "name",
-                     type: "varchar",
-                     length: "255",                         
-                  },
-                  {
-                    name: "surname",
-                    type: "varchar",
-                    length: "255",                         
-                 },
-                  {
                     name: "portfolio",
                     type: "varchar",
                     length: "255",                        

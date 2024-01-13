@@ -2,7 +2,11 @@ import { Controller } from "./Controller";
 import { Request, Response } from "express";
 import { User } from "../models/User";
 import { AppDataSource } from "../database/data-source";
-
+import {
+   CreateUserRequestBody,
+   LoginUserRequestBody,
+   TokenData,
+} from "../types/types";
 // -----------------------------------------------------------------------------
 
 export class UserController implements Controller {
@@ -10,14 +14,33 @@ export class UserController implements Controller {
       try {
          const userRepository = AppDataSource.getRepository(User);
          
-         const allUsers = await userRepository.find();
-         res.status(200).json(allUsers);
+         let { page, skip } = req.query;
+
+         let currentPage = page ? +page : 1;
+         let itemsPerPage = skip ? +skip : 15;
+
+         const [allUsers, count] = await userRepository.findAndCount({
+            skip: (currentPage - 1) * itemsPerPage,
+            take: itemsPerPage,
+            select: {
+               username: true,
+               email: true,
+               id: true,
+            },
+         });
+         res.status(200).json({
+            count,
+            skip: itemsPerPage,
+            page: currentPage,
+            results: allUsers,
+         });
       } catch (error) {
          res.status(500).json({
             message: "Error while getting users",
          });
       }
    }
+
 
    async getById(req: Request, res: Response): Promise<void | Response<any>> {
       try {

@@ -59,9 +59,11 @@ Tecnologías utilizadas:
         body:
         ``` js
             {
-                "user": "David",
-                "email": "david@david.com",
-                "password": "princes"
+                "username": "DavZZ",
+                "name": "David",
+                "surname": "Rodri",
+                "email": "david@example.com",
+                "password": "123456"
             }
         ```
 
@@ -71,9 +73,8 @@ Tecnologías utilizadas:
         body:
         ``` js
             {
-                "user": "David",
-                "email": "david@david.com",
-                "password": "princes"
+                "email": "david@example.com",
+                "password": "123456"
             }
         ```
 - CITAS

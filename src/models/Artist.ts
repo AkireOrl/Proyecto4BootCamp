@@ -12,12 +12,6 @@ export class Artists extends BaseEntity {
     user_id!: number;
 
     @Column()
-    name!: string;
-
-    @Column()
-    surname!: string;
-
-    @Column()
     portfolio!: string;
 
     @Column()

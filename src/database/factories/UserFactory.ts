@@ -8,6 +8,9 @@ import { UserRoles } from "../../constants/UserRoles";
 // -----------------------------------------------------------------------------
 
 export class UserFactory extends BaseFactory<User> {
+   static createMany(artistCount: number, arg1: { roles: Role[]; }) {
+       throw new Error("Method not implemented.");
+   }
    protected  generateSpecifics(user: User): User {
       user.username = faker.internet.userName(); 
       user.name = faker.person.firstName();

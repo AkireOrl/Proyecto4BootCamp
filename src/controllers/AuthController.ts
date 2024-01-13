@@ -36,23 +36,28 @@ export class AuthController {
           await userRepository.save(newUser);
  
           // Crear un artista
-        //   const newArtist: User = {
-        //      user: newArtist,
-        //      name,
-        //      surname,
-             
-        //   };
-        //   await artistRepository.save(newArtist);
+         
+         // const newArtist: User = {
+         //    username,
+         //    name,
+         //    surname,
+         //    email,
+         //    password_hash: bcrypt.hashSync(password, 10),
+         //    roles: [UserRoles.ADMIN],
+         // };
+         // await userRepository.save(newArtist)
  
           res.status(StatusCodes.CREATED).json({
              message: "User created successfully",
           });
-       } catch (error) {
-          res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-             message: "Error while creating User",
-          });
+       } catch (error: any) {
+         console.error("Error while creating Appointment:", error);
+         res.status(500).json({
+           message: "Error while creating Appointment",
+           error: error.message,
+         });
        }
-    }
+     }
  
     async login(
        req: Request<{}, {}, LoginUserRequestBody>,

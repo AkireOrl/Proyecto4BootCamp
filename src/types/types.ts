@@ -5,6 +5,11 @@ export interface CreateUserRequestBody {
     password: string;
     email: string;   
  }
+ export interface CreateArtistRequestBody {
+   name: string;
+   surname: string;
+   portfolio: string;
+}
  
  export interface LoginUserRequestBody {
     email: string;
