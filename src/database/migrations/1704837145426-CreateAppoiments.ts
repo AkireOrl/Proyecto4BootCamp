@@ -17,22 +17,26 @@ export class CreateAppoiments1704837145426 implements MigrationInterface {
                   {
                     name: "user_id",
                     type: "int",
-                    isPrimary: true,
+                    //isPrimary: true,
+                    isNullable: true
                  },
                  {
                     name: "artist_id",
                     type: "int",
-                    isPrimary: true,
+                    //isPrimary: true,
+                    isNullable: true
                  },
                   {
                      name: "date",
                      type: "varchar",
-                     length: "255",                    
+                     length: "255",
+                     isNullable: true                    
                   },
                   {
                     name: "hour",
                     type: "varchar",
                     length: "255",
+                    isNullable: true
                     
                  },
                  {
