@@ -7,6 +7,11 @@ import {
    LoginUserRequestBody,
    TokenData,
 } from "../types/types";
+import { UserRoles } from "../constants/UserRoles";
+import { AuthController } from "./AuthController";
+import bcrypt from "bcrypt";
+import { StatusCodes } from "http-status-codes";
+import jwt from "jsonwebtoken";
 // -----------------------------------------------------------------------------
 
 export class UserController implements Controller {
@@ -65,19 +70,39 @@ export class UserController implements Controller {
       }
    }
 
-   async create(req: Request, res: Response): Promise<void | Response<any>> {
-      try {
-         const data = req.body;
+   async create(
+      req: Request<{}, {}, CreateUserRequestBody>,
+      res: Response
+   ): Promise<void | Response<any>> {
+      const { username, name, surname , password, email } = req.body;
 
-         const userRepository = AppDataSource.getRepository(User);
-         const newUser = await userRepository.save(data);
-         res.status(201).json(newUser);
-      } catch (error) {
-         res.status(500).json({
-            message: "Error while creating user",
+      const userRepository = AppDataSource.getRepository(User);
+
+      try {
+         // Crear nuevo usuario
+         const newUser: User = {
+            username,
+            name,
+            surname,
+            email,
+            password_hash: bcrypt.hashSync(password, 10),
+            roles: [UserRoles.USER],
+         };
+         await userRepository.save(newUser);
+
+
+         res.status(StatusCodes.CREATED).json({
+            message: "User created successfully",
          });
+      } catch (error: any) {
+        console.error("Error while creating Appointment:", error);
+        res.status(500).json({
+          message: "Error while creating Appointment",
+          error: error.message,
+        });
       }
-   }
+    }
+   
 
    async update(req: Request, res: Response): Promise<void | Response<any>> {
       try {
@@ -102,14 +127,19 @@ export class UserController implements Controller {
 
          const userRepository = AppDataSource.getRepository(User);
          await userRepository.delete(id);
+         // const roleRepository = AppDataSource.getRepository();
+         // await roleRepository.deleteRolesFromUserId(id);
+      
 
          res.status(200).json({
             message: "User deleted successfully",
          });
-      } catch (error) {
-         res.status(500).json({
-            message: "Error while deleting user",
-         });
-      }
+      } catch (error: any) { 
+         console.error("Error while delete users:", error); 
+         res.status(500).json({ 
+           message: "Error while delete users", 
+           error: error.message, 
+         }); 
+       } 
+     }
    }
-}

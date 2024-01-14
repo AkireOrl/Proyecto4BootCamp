@@ -3,6 +3,14 @@ import { Request, Response } from "express";
 import { User } from "../models/User";
 import { AppDataSource } from "../database/data-source";
 import { Artists } from "../models/Artist";
+import { UserRoles } from "../constants/UserRoles";
+import {
+   CreateUserRequestBody,
+   LoginUserRequestBody,
+   TokenData,
+} from "../types/types";
+import bcrypt from "bcrypt";
+import { StatusCodes } from "http-status-codes";
 // -----------------------------------------------------------------------------
 
 export class ArtistController implements Controller {
@@ -42,19 +50,38 @@ export class ArtistController implements Controller {
       }
    }
 
-   async create(req: Request, res: Response): Promise<void | Response<any>> {
-      try {
-         const data = req.body;
+   async create(
+      req: Request<{}, {}, CreateUserRequestBody>,
+      res: Response
+   ): Promise<void | Response<any>> {
+      const { username, name, surname , password, email } = req.body;
 
-         const artistRepository = AppDataSource.getRepository(Artists);
-         const newArtist = await artistRepository.save(data);
-         res.status(201).json(newArtist);
-      } catch (error) {
-         res.status(500).json({
-            message: "Error while creating artist",
+      const userRepository = AppDataSource.getRepository(User);
+
+      try {
+         // Crear nuevo usuario
+         const newUser: User = {
+            username,
+            name,
+            surname,
+            email,
+            password_hash: bcrypt.hashSync(password, 10),
+            roles: [UserRoles.ADMIN],
+         };
+         await userRepository.save(newUser);
+
+
+         res.status(StatusCodes.CREATED).json({
+            message: "User created successfully",
          });
+      } catch (error: any) {
+        console.error("Error while creating Appointment:", error);
+        res.status(500).json({
+          message: "Error while creating Appointment",
+          error: error.message,
+        });
       }
-   }
+    }
 
    async update(req: Request, res: Response): Promise<void | Response<any>> {
       try {
