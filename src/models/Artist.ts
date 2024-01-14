@@ -4,7 +4,7 @@ import { Design } from "./Design";
 import { Appointment } from "./Appointment";
 import { UserRoles } from "../constants/UserRoles";
 @Entity("artist")
-export class Artists extends BaseEntity {
+export class Artists {
     @PrimaryGeneratedColumn()
     id!: number;
 
@@ -12,7 +12,7 @@ export class Artists extends BaseEntity {
     user_id!: number;
 
     @Column()
-    portfolio!: string;
+    portfolio?: string;
 
     @Column()
     created_at!: Date

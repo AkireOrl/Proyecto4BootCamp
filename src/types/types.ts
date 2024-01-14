@@ -7,7 +7,7 @@ export interface CreateUserRequestBody {
  }
  export interface CreateArtistRequestBody {
    user_id: number;
-   portfolio: string;
+   
 
 }
  

@@ -3,7 +3,7 @@ import { User } from "./User";
 import { Artists } from "./Artist";
 
 @Entity("appointments")
-export class Appointment extends BaseEntity {
+export class Appointment {
     @PrimaryGeneratedColumn()
     id!: number;
 
