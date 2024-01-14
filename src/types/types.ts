@@ -21,5 +21,10 @@ export interface CreateUserRequestBody {
     userRoles: string[];
  }
 
- 
+ export interface CreateAppointmentsRequestBody {
+   artist_id:number,
+   user_id: number,
+   date: Date;
+   hour: string
+ }
  

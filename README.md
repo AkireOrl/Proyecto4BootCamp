@@ -69,7 +69,7 @@ Tecnologías utilizadas:
 
     - LOGIN
 
-            POST http://localhost:3000/api/login  
+            POST http://localhost:3000/auth/login 
         body:
         ``` js
             {
@@ -78,8 +78,16 @@ Tecnologías utilizadas:
             }
         ```
 - CITAS
-
+            
 - ARTISTAS
+            POST http://localhost:3000/api/artist
+            {
+                "username" : "UserArtis777",
+                "name": "UserAr77",
+                "surname": "Funcio777",
+                "password_hash": "123456",
+                "email" : "artist7@example.com"
+            }
 </details>
 
 ## Futuras funcionalidades
