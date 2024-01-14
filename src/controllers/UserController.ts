@@ -74,7 +74,7 @@ export class UserController implements Controller {
       req: Request<{}, {}, CreateUserRequestBody>,
       res: Response
    ): Promise<void | Response<any>> {
-      const { username, name, surname , password, email } = req.body;
+      const { username, name, surname , password_hash, email } = req.body;
 
       const userRepository = AppDataSource.getRepository(User);
 
@@ -85,7 +85,7 @@ export class UserController implements Controller {
             name,
             surname,
             email,
-            password_hash: bcrypt.hashSync(password, 10),
+            password_hash: bcrypt.hashSync(password_hash, 10),
             roles: [UserRoles.USER],
          };
          await userRepository.save(newUser);
@@ -95,9 +95,9 @@ export class UserController implements Controller {
             message: "User created successfully",
          });
       } catch (error: any) {
-        console.error("Error while creating Appointment:", error);
+        console.error("Error while creating User:", error);
         res.status(500).json({
-          message: "Error while creating Appointment",
+          message: "Error while creating User",
           error: error.message,
         });
       }

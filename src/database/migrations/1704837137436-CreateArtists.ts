@@ -17,7 +17,7 @@ export class CreateArtists1704837137436 implements MigrationInterface {
                   {
                     name: "user_id",
                     type: "int",     
-                    isPrimary: true,               
+                    isPrimary: true,              
                  },
                   {
                     name: "portfolio",

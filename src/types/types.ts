@@ -2,13 +2,13 @@ export interface CreateUserRequestBody {
     username: string;
     name: string;
     surname: string;
-    password: string;
+    password_hash: string;
     email: string;   
  }
  export interface CreateArtistRequestBody {
-   name: string;
-   surname: string;
+   user_id: number;
    portfolio: string;
+
 }
  
  export interface LoginUserRequestBody {
@@ -20,4 +20,6 @@ export interface CreateUserRequestBody {
     userId: string;
     userRoles: string[];
  }
+
+ 
  

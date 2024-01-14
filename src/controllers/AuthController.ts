@@ -18,7 +18,7 @@ export class AuthController {
        req: Request<{}, {}, CreateUserRequestBody>,
        res: Response
     ): Promise<void | Response<any>> {
-       const { username, name, surname , password, email } = req.body;
+       const { username, name, surname , password_hash, email } = req.body;
  
        const userRepository = AppDataSource.getRepository(User);
        const artistRepository = AppDataSource.getRepository(Artists);
@@ -30,7 +30,7 @@ export class AuthController {
              name,
              surname,
              email,
-             password_hash: bcrypt.hashSync(password, 10),
+             password_hash: bcrypt.hashSync(password_hash, 10),
              roles: [UserRoles.USER],
           };
           await userRepository.save(newUser);
@@ -48,12 +48,12 @@ export class AuthController {
          // await userRepository.save(newArtist)
  
           res.status(StatusCodes.CREATED).json({
-             message: "User created successfully",
+             message: "Register successfully",
           });
        } catch (error: any) {
-         console.error("Error while creating Appointment:", error);
+         console.error("Error while register:", error);
          res.status(500).json({
-           message: "Error while creating Appointment",
+           message: "Error while register",
            error: error.message,
          });
        }
