@@ -75,7 +75,7 @@ Tecnologías utilizadas:
         ```
 
 - USERS
-            POST http://localhost:3000/api/users
+            POST http://localhost:3000/api/users<br>
         body:
         
         {
@@ -87,7 +87,7 @@ Tecnologías utilizadas:
         }
             
 - ARTISTAS
-            POST http://localhost:3000/api/artist
+            POST http://localhost:3000/api/artist<br>
         body:  
         
     
@@ -103,7 +103,7 @@ Tecnologías utilizadas:
            
 
 - CITAS
-            POST http://localhost:3000/api/appointment
+            POST http://localhost:3000/api/appointment<br>
          body:
       
             
