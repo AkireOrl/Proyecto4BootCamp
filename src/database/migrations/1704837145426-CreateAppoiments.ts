@@ -57,11 +57,13 @@ export class CreateAppoiments1704837145426 implements MigrationInterface {
                 columnNames: ["user_id"],
                 referencedTableName: "users",
                 referencedColumnNames: ["id"],
+                onDelete: "CASCADE",
                },
                {
                 columnNames: ["artist_id"],
                 referencedTableName: "artist",
                 referencedColumnNames: ["id"],
+                onDelete: "CASCADE",
                },
             ],
             }),

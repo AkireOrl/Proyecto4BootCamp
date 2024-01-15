@@ -23,11 +23,13 @@ export class CreateUsersRoles1704837126641 implements MigrationInterface {
                      columnNames: ["user_id"],
                      referencedTableName: "users",
                      referencedColumnNames: ["id"],
+                     onDelete: "CASCADE",
                   },
                   {
                      columnNames: ["role_id"],
                      referencedTableName: "roles",
                      referencedColumnNames: ["id"],
+                     onDelete: "CASCADE",
                   },
                ],
             }),
