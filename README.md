@@ -81,20 +81,19 @@ Tecnologías utilizadas:
             
 - ARTISTAS
             POST http://localhost:3000/api/artist
+        body:
+        
+        
             {
-                "username" : "UserArtis777",
-                "name": "UserAr77",
-                "surname": "Funcio777",
+                "username" : "UserArtis",
+                "name": "UserAr",
+                "surname": "Auser",
                 "password_hash": "123456",
-                "email" : "artist7@example.com"
+                "email" : "auser@example.com"
             }
+            
+        
 </details>
-
-## Futuras funcionalidades
-[ ] Añadir create book  
-[ ] Añadir logs  con winston  
-[ ] Validaciones de la solicitud con express-validator  
-[ ] ...
 
 ### Endpoints
 
@@ -157,26 +156,17 @@ Puedes hacerlo de dos maneras:
         ```
     - Abre una solicitud de Pull Request
 
-## Licencia
-Este proyecto se encuentra bajo licencia de "Mi Nombre"
 
 ## Webgrafia:
 Para conseguir mi objetivo he recopilado información de:
-- link a repositorios 
-- link a documentacion de librerias externas
-- ...
+- https://github.com/fidelfsd/fsd-online-express-typeorm-academy-api 
+- https://github.com/vincenzo2202/Backend_tatto-studio_API_DB
+- https://typeorm.io/
 
-## Desarrollo:
-
-``` js
- const developer = "datata";
-
- console.log("Desarrollado por: " + datata);
-```  
 
 ## Agradecimientos:
 
-Agradezco a mis compañeros el tiempo dedicado a este proyecto:
+Agradezco a mis compañeros el tiempo dedicado a este proyecto y a los profesores de [GeeksHubsAcademy_](https://geekshubsacademy.com/) que nos han guiado en el camino 🤗:
 
 - **Gabe**  
 <a href="https://github.com/GabrielEscudillo" target="_blank"><img src="https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=white" target="_blank"></a> 

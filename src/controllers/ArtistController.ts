@@ -111,7 +111,6 @@ export class ArtistController implements Controller {
           const newArtist = artistRepository.create({ 
             user_id: newUser.id, // Asocia el nuevo artista con el usuario recién creado. 
             portfolio: "https://"
-            // Otros campos relacionados con el artista, si es necesario. 
           }); 
      
           await artistRepository.save(newArtist); 

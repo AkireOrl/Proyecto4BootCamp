@@ -22,8 +22,8 @@ export interface CreateUserRequestBody {
  }
 
  export interface CreateAppointmentsRequestBody {
-   artist_id:number,
    user_id: number,
+   artist_id:number,
    date: Date;
    hour: string
  }
