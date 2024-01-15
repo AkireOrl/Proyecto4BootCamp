@@ -80,9 +80,9 @@ Tecnologías utilizadas:
             
 - ARTISTAS
             POST http://localhost:3000/api/artist
-        body:
+        body:  
         
-        
+    
             {
                 "username" : "UserArtis",
                 "name": "UserAr",
@@ -90,18 +90,23 @@ Tecnologías utilizadas:
                 "password_hash": "123456",
                 "email" : "auser@example.com"
             }
+          
+          
+           
 
 - CITAS
             POST http://localhost:3000/api/appointment
-            body:
-            ```
+         body:
+      ```json
+            
             {
                 "user_id": 9,
                 "artist_id": 7,
                 "date": "2024-04-12",
                 "hour": "13:00h"
             }
-            ```
+            
+      ```
         
 </details>
 
