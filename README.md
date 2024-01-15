@@ -26,10 +26,6 @@ Este proyecto requería una API funcional conectada a una base de datos relacion
 ## Sobre el proyecto
 Propuesto el proyecto de desarrollar una aplicación web para la gestión de una compañía de un estudio de tatuajes, el presente repositorio supone la sección backend del mismo. Esta sección habrá de desarrollarse con un esquema modelo vista controllador, generando una API funcional que permita hacer distintas llamadas, en ocasiones multitabla, discriminando los privilegios de usuario en función de su rol.
 
-## Deploy 🚀
-<div align="center">
-    <a href="https://www.google.com"><strong>Url a producción </strong></a>🚀🚀🚀
-</div>
 
 ## Stack
 Tecnologías utilizadas:
@@ -37,7 +33,7 @@ Tecnologías utilizadas:
 
 
 ## Diagrama BD
-!['imagen-db'](./img/CentroTatuajes.drawio.png)
+!['imagen-db'](./img/TatuShopp_DB.png)
 
 ## Instalación en local
 1. Clonar el repositorio
@@ -55,7 +51,7 @@ Tecnologías utilizadas:
 - AUTH
     - REGISTER
 
-            POST http://localhost:3000/api/register
+            POST http://localhost:3000/auth/register
         body:
         ``` js
             {
@@ -77,6 +73,18 @@ Tecnologías utilizadas:
                 "password": "123456"
             }
         ```
+
+- USERS
+            POST http://localhost:3000/api/users
+        body:
+        
+        {
+            "username": "UserClient",
+            "name": "UserClie",
+            "surname": "Cuser",
+            "password_hash": "123456",
+            "email": "cuser@example.com"
+        }
             
 - ARTISTAS
             POST http://localhost:3000/api/artist
@@ -97,7 +105,7 @@ Tecnologías utilizadas:
 - CITAS
             POST http://localhost:3000/api/appointment
          body:
-      ```json
+      
             
             {
                 "user_id": 9,
@@ -106,49 +114,9 @@ Tecnologías utilizadas:
                 "hour": "13:00h"
             }
             
-      ```
+      
         
 </details>
-
-### Endpoints
-
-**Generar nuevo usuario:** POST, http://localhost:5000/users
-
-**Inicio de sesión:** POST, http://localhost:5000/auth/login
-
-**Traer todos los usuarios:** GET, http://localhost:5000/users
-
-**Modificar usuario:** PUT, http://localhost:5000/users
-
-**Generar nuevos datos de pago:** POST, http://localhost:5000/paymentdatas
-
-**Modificar datos de pago:** PUT, http://localhost:5000/paymentdatas
-
-**Traer datos de pago de un cliente:** GET, http://localhost:5000/paymentdatas/${customerId}
-
-**Traer todos los artistas:** GET, http://localhost:5000/artists
-
-**Generar nuevo artista:** POST, http://localhost:5000/artists
-
-**Traer todos los diseños con datos de artista:** GET, http://localhost:5000/designs
-
-**Traer diseños por búsqueda:** GET, http://localhost:5000/designs/${criteria}
-
-**Traer diseños con datos de artista según su autor:** GET, http://localhost:5000/artists/${userId}
-
-**Generar nuevo diseño:** POST, http://localhost:5000/designs
-
-**Eliminar diseño:** DELETE, http://localhost:5000/designs/${erase}
-
-**Traer todas las citas:** GET, http://localhost:5000/appointments
-
-**Traer las citas de un cliente:** GET, http://localhost:5000/appointments/${userId}
-
-**Traer las citas de un artista:** GET, http://localhost:5000/appointments/artist/${artistId}
-
-**Generar nueva cita:** POST, http://localhost:5000/appointments
-
-**Eliminar cita:** DELETE, http://localhost:5000/appointments/${erase}
 
 ## Contribuciones
 Las sugerencias y aportaciones son siempre bienvenidas.  
@@ -193,6 +161,6 @@ Agradezco a mis compañeros el tiempo dedicado a este proyecto y a los profesore
 <a href="https://www.github.com/userGithub/" target="_blank"><img src="https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=green" target="_blank"></a> 
 
 ## Contacto
-<a href = "mailto:micorreoelectronico@gmail.com"><img src="https://img.shields.io/badge/Gmail-C6362C?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
-<a href="https://www.linkedin.com/in/linkedinUser/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a> 
+<a href = "mailto:om.erikaorlando@gmail.com"><img src="https://img.shields.io/badge/Gmail-C6362C?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
+<a href="https://www.linkedin.com/in/erika-orlando/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a> 
 </p>
