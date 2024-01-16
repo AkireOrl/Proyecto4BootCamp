@@ -116,7 +116,7 @@ export class ArtistController implements Controller {
           await artistRepository.save(newArtist); 
         } 
      
-        res.status(201).json(newUser); 
+        res.status(201).json("Creado de putamadre"); 
       } catch (error: any) { 
         console.error("Error while creating artist:", error); 
         res.status(500).json({ 
@@ -162,3 +162,8 @@ export class ArtistController implements Controller {
       }
    }
 }
+   // async getAllWithUser(req: Request, res: Response): Promise<void | Response<any>> {
+   //    try{
+   //       const userId=+req.query.userId as number;
+   //       if(!isNaN(userId)){
+   //          const artistsUsersRepository=AppDataSource.getRepository(ArtistsUsers);
