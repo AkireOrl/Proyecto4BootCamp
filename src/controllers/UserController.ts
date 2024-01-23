@@ -102,7 +102,6 @@ export class UserController implements Controller {
         });
       }
     }
-   
 
    async update(req: Request, res: Response): Promise<void | Response<any>> {
       try {

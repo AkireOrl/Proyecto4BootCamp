@@ -52,36 +52,7 @@ export class ArtistController implements Controller {
          });
       }
    }
-   // async create(req: Request, res: Response): Promise<void | Response<any>> { 
-   //    try { 
-   //      const data = req.body; 
-     
-   //      const userRepository = AppDataSource.getRepository(User); 
-   //      const newUser = await userRepository.save(data); 
-     
-   //      // Verifica si el nuevo usuario tiene el rol de artista (puedes ajustar esto según tu implementación de roles). 
-   //      if (data.role_id === 2) { 
-   //        // Si es un artista, también crea una entrada en la tabla de artistas. 
-   //        const artistRepository = AppDataSource.getRepository(Artists); 
-   //        const newArtist = artistRepository.create({ 
-   //          user_id: newUser, // Asocia el nuevo artista con el usuario recién creado. 
-            
-   //          // Otros campos relacionados con el artista, si es necesario. 
-   //        }); 
-     
-   //        await artistRepository.save(newArtist); 
-   //      } 
-     
-   //      res.status(201).json(newUser); 
-   //    } catch (error: any) { 
-   //      console.error("Error while creating user:", error); 
-   //      res.status(500).json({ 
-   //        message: "Error while creating user", 
-   //        error: error.message, 
-   //      }); 
-   //    } 
-   //  }
-
+   
    async create(
       req: Request<{}, {},CreateUserRequestBody>,
       res: Response
@@ -116,7 +87,7 @@ export class ArtistController implements Controller {
           await artistRepository.save(newArtist); 
         } 
      
-        res.status(201).json("Creado de putamadre"); 
+        res.status(201).json("Artist create successfully"); 
       } catch (error: any) { 
         console.error("Error while creating artist:", error); 
         res.status(500).json({ 
