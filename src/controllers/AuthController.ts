@@ -35,18 +35,6 @@ export class AuthController {
           };
           await userRepository.save(newUser);
  
-          // Crear un artista
-         
-         // const newArtist: User = {
-         //    username,
-         //    name,
-         //    surname,
-         //    email,
-         //    password_hash: bcrypt.hashSync(password, 10),
-         //    roles: [UserRoles.ADMIN],
-         // };
-         // await userRepository.save(newArtist)
- 
           res.status(StatusCodes.CREATED).json({
              message: "Register successfully",
           });

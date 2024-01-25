@@ -133,8 +133,4 @@ export class ArtistController implements Controller {
       }
    }
 }
-   // async getAllWithUser(req: Request, res: Response): Promise<void | Response<any>> {
-   //    try{
-   //       const userId=+req.query.userId as number;
-   //       if(!isNaN(userId)){
-   //          const artistsUsersRepository=AppDataSource.getRepository(ArtistsUsers);
+   
