@@ -49,7 +49,7 @@ Tecnologías utilizadas:
 
             POST http://localhost:3000/auth/register
         body:
-        ``` js
+        
             {
                 "username": "DavZZ",
                 "name": "David",
@@ -57,34 +57,71 @@ Tecnologías utilizadas:
                 "email": "david@example.com",
                 "password": "123456"
             }
-        ```
+        
 
     - LOGIN
 
             POST http://localhost:3000/auth/login 
         body:
-        ``` js
+        
             {
                 "email": "david@example.com",
                 "password": "123456"
             }
-        ```
+        
 
 - USERS
-            POST http://localhost:3000/api/users<br>
+
+    - Crear User
+
+            POST http://localhost:3000/api/users
+            
         body:
-        
-        {
+       
+     
+           {
             "username": "UserClient",
             "name": "UserClie",
             "surname": "Cuser",
             "password_hash": "123456",
             "email": "cuser@example.com"
-        }
+            }
+
+    
+    -  Obtener todos los usuarios (super_admin)
+    
+            GET http://localhost:3000/api/users
+
+    
+    - Get user by id 
+    
+            GET http://localhost:3000/api/users/:id
+
+            
+    - Update user info 
+    
+            PATCH http://localhost:3000/api/users/:id
+        body: 
+          
+                
+                {
+                "username" : "Cambio333UsiarioPrueba",
+                "name": "Cam33UsiarioPr",
+                "surname": "USUCita",
+                "password_hash": "123456",
+                "email" : "Priue@example.com"
+                 }
+                    
+            
+
             
 - ARTISTAS
-            POST http://localhost:3000/api/artist<br>
-        body:  
+    
+    -Crear tatuador
+        
+      POST http://localhost:3000/api/artist
+      
+    body:  
         
     
             {
@@ -94,13 +131,25 @@ Tecnologías utilizadas:
                 "password_hash": "123456",
                 "email" : "auser@example.com"
             }
+
+    -Ver tatuador por id
+        
+        GET http://localhost:3000/api/artist/16
+        
+    -Ver todos los tatuadores(super_admin)
+    
+        GET http://localhost:3000/api/artist
           
           
            
 
 - CITAS
-            POST http://localhost:3000/api/appointment<br>
-         body:
+
+    -Crear Cita
+
+            POST http://localhost:3000/api/appointment
+            
+    body:
       
             
             {
@@ -110,7 +159,19 @@ Tecnologías utilizadas:
                 "hour": "13:00h"
             }
             
+    -Ver todas las citas (super_admin)
+        
+            GET http://localhost:3000/api/appointment
+            
+    -Actualizar citas (con id)
+    
+            PATCH http://localhost:3000/api/appointment/1
       
+    -Borrar cita (con id de cita)
+    
+            DELETE http://localhost:3000/api/appointment/1
+            
+    
         
 </details>
 

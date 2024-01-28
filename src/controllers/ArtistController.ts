@@ -21,11 +21,11 @@ export class ArtistController implements Controller {
       try {
          const artistRepository = AppDataSource.getRepository(Artists);
          
-         const allArtists = await artistRepository.find();
+         const allArtists = await artistRepository.findBy({});
          res.status(200).json(allArtists);
       } catch (error) {
          res.status(500).json({
-            message: "Error while getting users",
+            message: "Error while getting artist",
          });
       }
    }
@@ -33,10 +33,12 @@ export class ArtistController implements Controller {
    async getById(req: Request, res: Response): Promise<void | Response<any>> {
       try {
          const id = +req.params.id;
+         console.log(id, "Soy console de getById")
 
          const artistRepository = AppDataSource.getRepository(Artists);
          const artist = await artistRepository.findOneBy({
             id: id,
+            
          });
 
          if (!artist) {
@@ -97,8 +99,7 @@ export class ArtistController implements Controller {
       } 
     }
    
-    
-
+  
    async update(req: Request, res: Response): Promise<void | Response<any>> {
       try {
          const id = +req.params.id;

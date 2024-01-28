@@ -3,6 +3,7 @@ import { Appointment } from "../models/Appointment";
 import { AppDataSource } from "../database/data-source";
 import { Controller } from "./Controller";
 import { CreateAppointmentsRequestBody } from "../types/types";
+import bcrypt from "bcrypt";
 
 
 //----------------------------------------------------------------------
@@ -43,6 +44,7 @@ export class AppointmentController implements Controller {
 
    async getById(req: Request, res: Response): Promise<void | Response<any>> {
       try {
+
          const id = +req.params.id;
          const appointmentRepository = AppDataSource.getRepository(Appointment);
          const appointments = await appointmentRepository.findOneBy({
@@ -68,6 +70,28 @@ export class AppointmentController implements Controller {
          const appointmentRepository = AppDataSource.getRepository(Appointment);
          const appointments = await appointmentRepository.findBy({
             artist_id: id,
+         });
+
+         if (!appointments) {
+            return res.status(404).json({
+               message: "Appointment not found",
+            });
+         }
+
+         res.status(200).json(appointments);
+      } catch (error) {
+         res.status(500).json({
+            message: "Error while getting appointments",
+         });
+      }
+   }
+
+   async getByUserId(req: Request, res: Response): Promise<void | Response<any>> {
+      try {
+         const id = +req.params.id;
+         const appointmentRepository = AppDataSource.getRepository(Appointment);
+         const appointments = await appointmentRepository.findBy({
+            user_id: id,
          });
 
          if (!appointments) {
