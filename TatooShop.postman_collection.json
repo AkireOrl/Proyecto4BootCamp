@@ -130,10 +130,20 @@
 				{
 					"name": "AllArtist",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzMyIsInVzZXJSb2xlcyI6WyJhZG1pbiJdLCJpYXQiOjE3MDY0NDU3MTgsImV4cCI6MTcwNjQ1NjUxOH0.P_Lnle3Yfm-A1toSKh7H2WXzWqFS4UZIs3RobGDMNjA",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/artist",
+							"raw": "http://localhost:3000/api/artist/16",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -141,7 +151,8 @@
 							"port": "3000",
 							"path": [
 								"api",
-								"artist"
+								"artist",
+								"16"
 							]
 						}
 					},
@@ -173,6 +184,14 @@
 								"artist"
 							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "ArtistProfile",
+					"request": {
+						"method": "GET",
+						"header": []
 					},
 					"response": []
 				}
@@ -276,6 +295,60 @@
 								"api",
 								"appointment",
 								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MisCitasArtist",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/appointment/miscitas/14",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"appointment",
+								"miscitas",
+								"14"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MisCitasUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzNCIsInVzZXJSb2xlcyI6WyJ1c2VyIl0sImlhdCI6MTcwNjQ1NjE0MSwiZXhwIjoxNzA2NDY2OTQxfQ.8BKcT4kWQLszghOuej2apJBLOf1RH9vukR01VXvhlo0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/appointment/miscitasuser/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"appointment",
+								"miscitasuser",
+								"3"
 							]
 						}
 					},
