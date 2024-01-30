@@ -135,6 +135,10 @@ Tecnologías utilizadas:
     -Ver tatuador por id
         
         GET http://localhost:3000/api/artist/16
+
+    -Perfil del tatuador (con id)
+
+        GET http://localhost:3000/api/artist/artistprofile/17
         
     -Ver todos los tatuadores(super_admin)
     

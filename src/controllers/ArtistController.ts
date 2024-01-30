@@ -20,7 +20,7 @@ export class ArtistController implements Controller {
    async getAll(req: Request, res: Response): Promise<void | Response<any>> {
       try {
          const artistRepository = AppDataSource.getRepository(Artists);
-         
+
          const allArtists = await artistRepository.findBy({});
          res.status(200).json(allArtists);
       } catch (error) {
@@ -33,12 +33,12 @@ export class ArtistController implements Controller {
    async getById(req: Request, res: Response): Promise<void | Response<any>> {
       try {
          const id = +req.params.id;
-         console.log(id, "Soy console de getById")
+         // console.log(id, "Soy console de getById")
 
          const artistRepository = AppDataSource.getRepository(Artists);
          const artist = await artistRepository.findOneBy({
             id: id,
-            
+
          });
 
          if (!artist) {
@@ -54,52 +54,52 @@ export class ArtistController implements Controller {
          });
       }
    }
-   
+
    async create(
-      req: Request<{}, {},CreateUserRequestBody>,
+      req: Request<{}, {}, CreateUserRequestBody>,
       res: Response
-    ): Promise<void | Response<any>> {
+   ): Promise<void | Response<any>> {
       const { username, name, surname, password_hash, email } = req.body;
-    
+
       const userRepository = AppDataSource.getRepository(User);
-      
-    
+
+
       try {
-        // Crear nuevo usuario
-        const newUser: User = {
-          username,
-          name,
-          surname,
-          email,
-          password_hash: bcrypt.hashSync(password_hash, 10),
-          roles: [UserRoles.ADMIN],
-        };
-        await userRepository.save(newUser);
-    
-        //Crear nuevo artista asociado al usuario
-        
-         if (newUser.roles.includes(UserRoles.ADMIN)) { 
-          // Si es un artista, también crea una entrada en la tabla de artistas. 
-          const artistRepository = AppDataSource.getRepository(Artists); 
-          const newArtist = artistRepository.create({ 
-            user_id: newUser.id, // Asocia el nuevo artista con el usuario recién creado. 
-            portfolio: "https://"
-          }); 
-     
-          await artistRepository.save(newArtist); 
-        } 
-     
-        res.status(201).json("Artist create successfully"); 
-      } catch (error: any) { 
-        console.error("Error while creating artist:", error); 
-        res.status(500).json({ 
-          message: "Error while creating artis", 
-          error: error.message, 
-        }); 
-      } 
-    }
-   
-  
+         // Crear nuevo usuario
+         const newUser: User = {
+            username,
+            name,
+            surname,
+            email,
+            password_hash: bcrypt.hashSync(password_hash, 10),
+            roles: [UserRoles.ADMIN],
+         };
+         await userRepository.save(newUser);
+
+         //Crear nuevo artista asociado al usuario
+
+         if (newUser.roles.includes(UserRoles.ADMIN)) {
+            // Si es un artista, también crea una entrada en la tabla de artistas. 
+            const artistRepository = AppDataSource.getRepository(Artists);
+            const newArtist = artistRepository.create({
+               user_id: newUser.id, // Asocia el nuevo artista con el usuario recién creado. 
+               portfolio: "https://"
+            });
+
+            await artistRepository.save(newArtist);
+         }
+
+         res.status(201).json("Artist create successfully");
+      } catch (error: any) {
+         console.error("Error while creating artist:", error);
+         res.status(500).json({
+            message: "Error while creating artis",
+            error: error.message,
+         });
+      }
+   }
+
+
    async update(req: Request, res: Response): Promise<void | Response<any>> {
       try {
          const id = +req.params.id;
@@ -133,5 +133,39 @@ export class ArtistController implements Controller {
          });
       }
    }
+
+   async getByArtistId(req: Request, res: Response): Promise<void | Response<any>> { //falta probar
+      try {
+         const id = +req.params.id;
+         //console.log(id, "Soy console de getByArtistId")
+
+         const artistRepository = AppDataSource.getRepository(Artists);
+         const artist = await artistRepository.findOneBy({
+            id: id,
+
+         });
+
+         const userRepository = AppDataSource.getRepository(User);
+         let userArtist = await userRepository.findBy({
+               artist: true,
+               id: artist?.user_id,
+            }
+            
+         );
+         console.log(userArtist, "Soy linea 152")
+
+
+         if (!userArtist) {
+            return res.status(404).json({
+               message: "Artist not found",
+            });
+         }
+         res.status(200).json({ userArtist, artist });
+      } catch (error) {
+         res.status(500).json({
+            message: "Error while getting artist",
+         });
+      }
+   }
 }
-   
+
