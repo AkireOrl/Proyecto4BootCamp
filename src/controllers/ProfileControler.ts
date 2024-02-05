@@ -117,12 +117,12 @@ export const ProfileController = {
 
         const artistIds = appointments.map((appointment) => appointment.artist_id);
         const artistProfiles = await artistRepository.findBy({
-          id: In(artistIds), // use 'In' operator instead of 'Op.in'
+          id: In(artistIds), 
         });
 
         const userArtistIds = artistProfiles.map((artistProfile) => artistProfile.user_id);
         const userArtistProfiles = await userRepository.findBy({
-          id: In(userArtistIds), // use 'In' operator instead of 'Op.in'
+          id: In(userArtistIds), 
         });
 
         return res.status(200).json({ profileUser, appointments, artistProfiles, userArtistProfiles });
