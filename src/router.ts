@@ -4,6 +4,7 @@ import { AuthController } from "./controllers/AuthController";
 import  authRoutes from "./routes/auth.routes"
 import artistRoutes from "./routes/artists.routes"
 import appoinmentRoutes from "./routes/appointments.routes"
+
 // -----------------------------------------------------------------------------
 
 const router = express.Router();

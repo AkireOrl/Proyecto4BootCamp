@@ -10,7 +10,7 @@ import { isUser } from "../middlewares/isUser";
 const router = express.Router();
 const appointmentController= new AppointmentController();
 
-router.get("/",isSuperAdmin, appointmentController.getAll);
+router.get("/", auth, isSuperAdmin, appointmentController.getAll);
 router.get("/:id",auth, appointmentController.getById);
 router.post("/", appointmentController.create);
 router.patch("/:id", appointmentController.update);

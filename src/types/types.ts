@@ -18,8 +18,11 @@ export interface CreateUserRequestBody {
  }
  
  export interface TokenData {
+    email: string;
     userId: string;
     userRoles: string[];
+   
+    
  }
 
  export interface CreateAppointmentsRequestBody {

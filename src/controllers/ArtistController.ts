@@ -152,7 +152,7 @@ export class ArtistController implements Controller {
             }
             
          );
-         console.log(userArtist, "Soy linea 152")
+         // console.log(userArtist, "Soy linea 152")
 
 
          if (!userArtist) {
@@ -160,7 +160,12 @@ export class ArtistController implements Controller {
                message: "Artist not found",
             });
          }
-         res.status(200).json({ userArtist, artist });
+
+         const response = {
+            ...artist,
+            ...userArtist,
+         }
+         res.status(200).json(response);
       } catch (error) {
          res.status(500).json({
             message: "Error while getting artist",

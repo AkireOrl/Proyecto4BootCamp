@@ -12,13 +12,14 @@ import { AuthController } from "./AuthController";
 import bcrypt from "bcrypt";
 import { StatusCodes } from "http-status-codes";
 import jwt from "jsonwebtoken";
+
 // -----------------------------------------------------------------------------
 
 export class UserController implements Controller {
    async getAll(req: Request, res: Response): Promise<void | Response<any>> {
       try {
          const userRepository = AppDataSource.getRepository(User);
-         
+
          let { page, skip } = req.query;
 
          let currentPage = page ? +page : 1;
@@ -65,7 +66,7 @@ export class UserController implements Controller {
          res.status(200).json(user);
       } catch (error) {
          res.status(500).json({
-            message: "Error while getting user",
+            message: "Error while getting user del getbyId",
          });
       }
    }
@@ -74,7 +75,7 @@ export class UserController implements Controller {
       req: Request<{}, {}, CreateUserRequestBody>,
       res: Response
    ): Promise<void | Response<any>> {
-      const { username, name, surname , password_hash, email } = req.body;
+      const { username, name, surname, password_hash, email } = req.body;
 
       const userRepository = AppDataSource.getRepository(User);
 
@@ -95,13 +96,13 @@ export class UserController implements Controller {
             message: "User created successfully",
          });
       } catch (error: any) {
-        console.error("Error while creating User:", error);
-        res.status(500).json({
-          message: "Error while creating User",
-          error: error.message,
-        });
+         console.error("Error while creating User:", error);
+         res.status(500).json({
+            message: "Error while creating User",
+            error: error.message,
+         });
       }
-    }
+   }
 
    async update(req: Request, res: Response): Promise<void | Response<any>> {
       try {
@@ -128,17 +129,36 @@ export class UserController implements Controller {
          await userRepository.delete(id);
          // const roleRepository = AppDataSource.getRepository();
          // await roleRepository.deleteRolesFromUserId(id);
-      
+
 
          res.status(200).json({
             message: "User deleted successfully",
          });
-      } catch (error: any) { 
-         console.error("Error while delete users:", error); 
-         res.status(500).json({ 
-           message: "Error while delete users", 
-           error: error.message, 
-         }); 
-       } 
-     }
+      } catch (error: any) {
+         console.error("Error while delete users:", error);
+         res.status(500).json({
+            message: "Error while delete users",
+            error: error.message,
+         });
+      }
    }
+   async userProfile(req: Request, res: Response): Promise<Response<any>> {
+      try {
+        const email = req.tokenData.email;
+        const userRepository = AppDataSource.getRepository(User);
+        const profileUser = await userRepository.findOneBy({ 
+            email
+         })
+    
+        if (!profileUser) {
+          return res.status(404).json({ message: 'Profile not found' });
+        } else {
+         //  const { id, name, email } = profileUser;
+          return res.status(200).json({ profileUser});
+        }
+      } catch (err) {
+        console.error('Error in the profile controller', err);
+        return res.status(401).json({ status: 'Error', message: 'Not authorized.' });
+      }
+    }
+}
