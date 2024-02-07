@@ -9,7 +9,7 @@ import { ProfileController } from "../controllers/ProfileControler";
 const router = express.Router();
 const userController = new UserController();
 
-router.get("/", auth, isSuperAdmin, userController.getAll);
+router.get("/", userController.getAll);
 //router.get("/:id", auth, userController.getById);
 router.get("/profile", auth, userController.userProfile); 
 router.post("/", userController.create);

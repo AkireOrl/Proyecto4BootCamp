@@ -48,7 +48,7 @@ export const seedArtistsWithUser = async (count: number) => {
 
    // Asignar usuario a cada estudiante
    artist.forEach((artist, index) => {
-      artist.users = users[index];
+      artist.user = users[index];
    });
 
    // Guardar estudiantes en la base de datos
