@@ -22,7 +22,8 @@ export class CreateArtists1704837137436 implements MigrationInterface {
                   {
                     name: "portfolio",
                     type: "varchar",
-                    length: "255",                        
+                    length: "1000", 
+                    default: "'https://img.freepik.com/vector-gratis/serpiente-entrelazada-plantilla-calavera_225004-1348.jpg'",                       
                  },
                  {
                     name: "created_at",

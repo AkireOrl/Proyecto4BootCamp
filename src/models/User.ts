@@ -13,16 +13,17 @@ export class User {
     username!: string;
 
     @Column()
-    name!: string;
+    name?: string;
+    
 
     @Column()
-    surname!: string;
+    surname?: string;
 
     @Column()
     photo?: string;
 
-    @Column()
-    password_hash!: string;
+    @Column({select: false} ) // password is not selected by default in queries
+    password!: string;
 
     @Column({ unique: true })
     email!: string;

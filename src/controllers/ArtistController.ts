@@ -70,10 +70,10 @@ export class ArtistController implements Controller {
    }
 
    async create(
-      req: Request<{}, {}, CreateUserRequestBody>,
+      req: Request<{}, {}, CreateArtistRequestBody>,
       res: Response
    ): Promise<void | Response<any>> {
-      const { username, name, surname, password_hash, email } = req.body;
+      const { username, name, surname, password, email } = req.body;
 
       const userRepository = AppDataSource.getRepository(User);
 
@@ -85,7 +85,7 @@ export class ArtistController implements Controller {
             name,
             surname,
             email,
-            password_hash: bcrypt.hashSync(password_hash, 10),
+            password: bcrypt.hashSync(password, 10),
             roles: [UserRoles.ADMIN],
          };
          await userRepository.save(newUser);
@@ -97,7 +97,7 @@ export class ArtistController implements Controller {
             const artistRepository = AppDataSource.getRepository(Artists);
             const newArtist = artistRepository.create({
                user_id: newUser.id, // Asocia el nuevo artista con el usuario recién creado. 
-               portfolio: "https://"
+               portfolio: req.body.portfolio || '',
             });
 
             await artistRepository.save(newArtist);
@@ -114,22 +114,46 @@ export class ArtistController implements Controller {
    }
 
 
-   async update(req: Request, res: Response): Promise<void | Response<any>> {
+   async update(req: Request, res: Response): Promise<void | Response<any>> { //actualiza, solo la parte del portfolio
       try {
-         const id = +req.params.id;
-         const data = req.body;
-
-         const artistRepository = AppDataSource.getRepository(Artists);
-         const artistUpdated = await artistRepository.update({ id: id }, data);
-         res.status(202).json({
-            message: "Artist updated successfully",
-         });
+        const artistRepository = AppDataSource.getRepository(Artists);
+        const userRepository = AppDataSource.getRepository(User);
+        const userId = req.tokenData.userId;
+    
+        // Find the user by id
+        const user = await userRepository.findOne({
+          where: { id: +userId },
+          relations: ['artist'],
+        });
+    
+        if (!user) {
+          throw new Error('User not found');
+        }
+    
+        // Check if the user is an artist
+        if (!user.artist) {
+          throw new Error('User is not an artist');
+        }
+        const data = req.body;
+        const { portfolio } = req.body;
+    
+        // Update the artist
+        await artistRepository.update(user.artist.id, { portfolio });
+    
+        // No need to update the user since we're only modifying the associated artist
+       
+    
+        res.status(202).json({
+          message: 'Artist portfolio updated successfully',
+        });
       } catch (error) {
-         res.status(500).json({
-            message: "Error while updating artist",
-         });
+        res.status(500).json({
+          message: 'Error while updating artist portfolio',
+        });
       }
-   }
+    }
+
+  
 
    async delete(req: Request, res: Response): Promise<void | Response<any>> {
       try {
@@ -148,7 +172,7 @@ export class ArtistController implements Controller {
       }
    }
 
-   async getByArtistId(req: Request, res: Response): Promise<void | Response<any>> { //falta probar
+   async getByArtistId(req: Request, res: Response): Promise<void | Response<any>> { //funcionando
       try {
          const id = +req.params.id;
          //console.log(id, "Soy console de getByArtistId")

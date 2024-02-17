@@ -1,10 +1,10 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from "typeorm"
+import { Column, Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from "typeorm"
 import { Artists } from "./Artist";
 
 @Entity("designs")
-export class Design extends BaseEntity {
+export class Design {
     @PrimaryGeneratedColumn()
-    id!: number;
+    id?: number;
 
     @Column()
     artist_id!: number;
@@ -16,14 +16,14 @@ export class Design extends BaseEntity {
     picture!: string;
 
     @Column()
-    created_at!: Date
+    created_at?: Date
 
     @Column()
-    updated_at!: Date
+    updated_at?: Date
 
     @ManyToOne(() => Artists, (artists) => artists.user)
     @JoinColumn ({name: "artist_id"})
-    artist!: Artists;
+    artist?: Artists;
 
 
 }

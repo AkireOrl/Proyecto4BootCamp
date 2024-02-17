@@ -19,14 +19,14 @@ export class CreateRoles1704837116080 implements MigrationInterface {
                      name: "name",
                      type: "varchar",
                      length: "255",
-                     isUnique: true,
+                     isNullable: true,
     
                   },
                   {
                      name: "surname",
                      type: "varchar",
                      length: "255",
-                     isUnique: true,
+                     isNullable: true,
     
                   },
                   {
@@ -43,7 +43,7 @@ export class CreateRoles1704837116080 implements MigrationInterface {
     
                   },
                   {
-                     name: "password_hash",
+                     name: "password",
                      type: "varchar",
                      length: "255",
                   },
